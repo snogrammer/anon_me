@@ -39,5 +39,11 @@ module Anon
     config.middleware.use ActionDispatch::Flash
     config.middleware.use ActionDispatch::Cookies
     config.middleware.use ActionDispatch::Session::CookieStore
+
+    # One downside to ActiveAdmin using inherited_resources, which reduces the boilerplate for Rails controllers,
+    #  is that Rails then uses it when you scaffold anything in your app.
+    #  We need to tell Rails to use the regular scaffolding process by reminding it which `scaffold_controller` to use
+    # @see https://blog.heroku.com/a-rock-solid-modern-web-stack
+    config.app_generators.scaffold_controller = :scaffold_controller
   end
 end
