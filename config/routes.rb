@@ -7,9 +7,8 @@ Rails.application.routes.draw do
   scope '/api' do
     resources :info, only: [] do
       collection do
-        get :username, to: :username
-        get :email, to: :email
-        get :contact, to: :contact
+        get :digital, to: :digital
+        get :physical, to: :physical
       end
     end
   end

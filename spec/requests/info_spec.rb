@@ -3,23 +3,16 @@
 require 'rails_helper'
 
 RSpec.describe 'Info', type: :request do
-  describe 'GET /api/info/username' do
+  describe 'GET /api/info/digital' do
     it 'returns 200' do
-      get username_info_index_path
+      get digital_info_index_path
       expect(response).to have_http_status(200)
     end
   end
 
-  describe 'GET /api/info/email' do
+  describe 'GET /api/info/physical' do
     it 'returns 200' do
-      get email_info_index_path
-      expect(response).to have_http_status(200)
-    end
-  end
-
-  describe 'GET /api/info/contact' do
-    it 'returns 200' do
-      get contact_info_index_path
+      get physical_info_index_path
       expect(response).to have_http_status(200)
     end
   end

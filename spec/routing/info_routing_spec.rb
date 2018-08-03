@@ -4,16 +4,12 @@ require 'rails_helper'
 
 RSpec.describe InfoController, type: :routing do
   describe 'routing' do
-    it 'routes to #username' do
-      expect(get: '/api/info/username').to route_to('info#username')
+    it 'routes to #digital' do
+      expect(get: '/api/info/digital').to route_to('info#digital')
     end
 
-    it 'routes to #email' do
-      expect(get: '/api/info/email').to route_to('info#email')
-    end
-
-    it 'routes to #contact' do
-      expect(get: '/api/info/contact').to route_to('info#contact')
+    it 'routes to #physical' do
+      expect(get: '/api/info/physical').to route_to('info#physical')
     end
   end
 end
