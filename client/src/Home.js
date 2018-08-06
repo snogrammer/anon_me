@@ -1,16 +1,16 @@
-import React, { Component } from 'react';
-import { Container, Header, Segment, Button, Icon, Dimmer, Loader, Divider } from 'semantic-ui-react';
+import React, { Component } from 'react'
+import { Container, Header, Grid, Button, Icon, Dimmer, Loader, Divider } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
 
 class Home extends Component {
   constructor(){
-    super();
-    this.state = {};
-    this.getDigital = this.getDigital.bind(this);
-    // this.getPhysical = this.getPhysical.bind(this);
+    super()
+    this.state = {}
+    this.getDigital = this.getDigital.bind(this)
   }
 
   componentDidMount(){
-    this.getDigital();
+    this.getDigital()
   }
 
   fetch(endpoint){
@@ -21,11 +21,11 @@ class Home extends Component {
 
   getDigital(){
     this.fetch('/api/info/digital')
-      .then(digital => this.setState({digital: digital}));
+      .then(digital => this.setState({digital: digital}))
   }
 
   render() {
-    let { digital } = this.state;
+    let { digital } = this.state
 
     return digital
       ? <Container text textAlign='center'>
@@ -36,40 +36,55 @@ class Home extends Component {
             </Header.Content>
           </Header>
 
-          <Header as='h5'>
-            Protect your privacy and take back control of your data
+          <Header as='h4'>
+            Take Back Your Identity. Protect Your Privacy.
+
+            <Header.Content as='small'>
+              Protect yourself from hackers and companies selling your data by randomizing
+              usernames, emails, and passwords for every site you sign up.
+            </Header.Content>
           </Header>
 
           <Divider hidden section />
 
-          <Container>
-            <Header as='h3' icon>
-              <Icon name='user' />
-              <Header.Content>
-                {digital.username}
-              </Header.Content>
-            </Header>
-          </Container>
+          <Grid columns={1}>
+            <Grid.Row>
+              <Grid.Column>
+                <Header as='h3' icon>
+                  <Icon name='user' />
+                  <Header.Content>
+                    {digital.username}
+                  </Header.Content>
+                </Header>
+              </Grid.Column>
+            </Grid.Row>
 
-          <Container>
-            <Header as='h3' icon>
-              <Icon name='key' />
-              <Header.Content>
-                {digital.password}
-              </Header.Content>
-            </Header>
-          </Container>
+            <Grid.Row>
+              <Grid.Column>
+                <Header as='h3' icon>
+                  <Icon name='key' />
+                  <Header.Content>
+                    {digital.password}
+                  </Header.Content>
+                </Header>
+              </Grid.Column>
+            </Grid.Row>
 
-          <Container>
-            <Header as='h3' icon>
-              <Icon name='mail' />
-              <Header.Content>
-                <a href={digital.href}>{digital.email}</a>
-              </Header.Content>
-            </Header>
-          </Container>
+            <Grid.Row>
+              <Grid.Column>
+                <Header as='h3' icon>
+                  <Icon name='mail' />
+                  <Header.Content as={Link} to={digital.href} target='_blank'>
+                    {digital.email}
+                  </Header.Content>
+                </Header>
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
 
+          <Button size='massive' floated='right' circular icon='redo' onClick={() => this.getDigital()} />
         </Container>
+
         : <Container text>
             <Dimmer active inverted>
               <Loader content='Loading' />

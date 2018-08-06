@@ -3,9 +3,17 @@ body {
   padding: 0;
   font-family: sans-serif;
   background-color: #d9534f;
-  color: #fff;
 }
 
 #root {
   padding: 4rem 0;
+}
+
+.ui.header {
+  color: white;
+  text-shadow: 2px 2px 3px black;
+}
+
+a {
+  color: white;
 }

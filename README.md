@@ -20,8 +20,7 @@ This service has dependencies on the following services:
 ### Local development (without Docker)
 To start the application from project folder:
 
-1. Start App: `$ rails s`
-1. Access Sidekiq via browser: `$ open http://localhost:3000`
+1. Start App: `$ rake start`
 
 ### Database
 
