@@ -74,7 +74,7 @@ class Home extends Component {
               <Grid.Column>
                 <Header as='h3' icon>
                   <Icon name='mail' />
-                  <Header.Content as={Link} to={digital.href} target='_blank'>
+                  <Header.Content as='a' href={digital.href} target='_blank'>
                     {digital.email}
                   </Header.Content>
                 </Header>
